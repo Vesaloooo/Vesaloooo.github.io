@@ -166,7 +166,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Hexo-Github/" style="color: #ff7d73">Hexo Github</a>
+                <a href="/tags/Hexo-Github/" style="color: #03a9f4">Hexo Github</a>
             </span>
             
         </span>
@@ -199,13 +199,13 @@ git config user.email<span aria-hidden="true" class="line-numbers-rows"><span></
 <p>在 Git bash中，查看是否成功</p>
 <pre class="line-numbers language-none"><code class="language-none">ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="3-将-Hexo-部署到-GitHub"><a href="#3-将-Hexo-部署到-GitHub" class="headerlink" title="3. 将 Hexo 部署到 GitHub"></a>3. 将 Hexo 部署到 GitHub</h2><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为<br>YourgithubName就是你的 GitHub用户名</p>
+<h2 id="3-将-Hexo-部署到-GitHub"><a href="#3-将-Hexo-部署到-GitHub" class="headerlink" title="3. 将 Hexo 部署到 GitHub"></a>3. 将 Hexo 部署到 GitHub</h2><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为<br>YourgithubName就是你的 GitHub用户名（确定是用户名，不要输错，输错会导致后续对博客的一些修改无法与个人域名匹配）</p>
 <pre class="line-numbers language-none"><code class="language-none">deploy:
   type: git
   repo: https:&#x2F;&#x2F;github.com&#x2F;YourgithubName&#x2F;YourgithubName.github.io.git
   branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。</p>
+<p>这个时候需要安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。</p>
 <pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>然后</p>
@@ -218,14 +218,25 @@ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <p><img src="/2023-07-27-Hexo-Github%E9%83%A8%E7%BD%B2%E5%92%8C%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/6.jpg" alt="图片"></p>
 <h2 id="4-设置个人域名"><a href="#4-设置个人域名" class="headerlink" title="4. 设置个人域名"></a>4. 设置个人域名</h2><p>现在你的个人网站的地址是 yourname.github.io，如果想更改为自己想要的域名，可以自行购买一个域名。</p>
 <p>注册一个腾讯云或阿里云账户,在上面买一个域名，各个后缀的价格不太一样，根据自己的需求和喜好购买。</p>
-<p>先去注册域名,然后在控制台中，看到你购买的域名。</p>
+<p>以腾讯云为例：</p>
+<p>先去注册域名,然后在控制台中，找到你购买的域名。</p>
 <p>点解析进去，添加解析。</p>
 <p><img src="/2023-07-27-Hexo-Github%E9%83%A8%E7%BD%B2%E5%92%8C%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/7.jpg" alt="图片"></p>
+<p>打开命令行，ping自己的username.github.io地址，成功得到了一个ip如下：</p>
+<p><img src="/2023-07-27-Hexo-Github%E9%83%A8%E7%BD%B2%E5%92%8C%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/8.jpg" alt="图片"></p>
+<p>不要企图通过ping的方式，来找出所有的IP地址。因为你的网站的IP是会变化的哦。所以你需要添加这四个解析到IP地址的A记录。</p>
+<pre class="line-numbers language-none"><code class="language-none">185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>添加完成后，你的DNS解析记录应该是这样的。</p>
+<p><img src="/2023-07-27-Hexo-Github%E9%83%A8%E7%BD%B2%E5%92%8C%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/9.jpg" alt="图片"></p>
 <p>登录GitHub，进入之前创建的仓库，点击settings，设置Custom domain，输入你的域名</p>
-<p><img src="/2023-07-27-Hexo-Github%E9%83%A8%E7%BD%B2%E5%92%8C%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/7.jpg" alt="图片"></p>
+<p><img src="/2023-07-27-Hexo-Github%E9%83%A8%E7%BD%B2%E5%92%8C%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/10.jpg" alt="图片"></p>
 <p>然后在你的博客文件source中创建一个名为CNAME文件，不要后缀。写上你的域名。</p>
-<p><img src="/2023-07-27-Hexo-Github%E9%83%A8%E7%BD%B2%E5%92%8C%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/7.jpg" alt="图片"></p>
-<p>最后，在gitbash中，输入</p>
+<p><img src="/2023-07-27-Hexo-Github%E9%83%A8%E7%BD%B2%E5%92%8C%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D/11.jpg" alt="图片"></p>
+<p>最后，在 Git bash 中，输入</p>
 <pre class="line-numbers language-none"><code class="language-none">hexo clean
 hexo g
 hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
